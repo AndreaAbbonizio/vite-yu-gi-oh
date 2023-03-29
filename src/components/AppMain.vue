@@ -15,7 +15,6 @@ export default {
     created() {
         axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0').then((res) => {
             this.store.cards = res.data.data;
-            console.log(this.store.cards[0]);
 
         })
     }
@@ -37,6 +36,7 @@ export default {
 .container-cards {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: flex-end;
     gap: 20px;
     max-width: 1200px;

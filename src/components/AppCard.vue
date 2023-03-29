@@ -20,14 +20,16 @@ export default {
     width: calc(100% / 6);
     text-align: center;
     margin-bottom: .5em;
+    background-color: #d48f38;
 
     img {
         width: 100%;
         height: auto;
     }
 
-    h1 {
+    h2 {
         margin-bottom: .7em;
+        height: 100px;
     }
 }
 </style>
