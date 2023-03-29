@@ -9,15 +9,17 @@ export default {
 <template>
     <div class="card">
         <h2>{{ card.name }}</h2>
-        <img v-for="image in card.card_images" :src="image.image_url" alt="Card Image">
-        <div>Type: {{ card.type }}</div>
+        <div v-for="image in card.card_images">
+            <img :src="image.image_url" alt="Card Image">
+        </div>
+        <div id="type">Type: {{ card.type }}</div>
     </div>
 </template>
 
 
 <style lang="scss" scoped>
 .card {
-    width: calc(100% / 6);
+    width: calc(100% / 5 - 20px / 5 * 4);
     text-align: center;
     margin-bottom: .5em;
     background-color: #d48f38;
@@ -30,6 +32,23 @@ export default {
     h2 {
         margin-bottom: .7em;
         height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div:first-of-type {
+        display: block;
+    }
+
+    div {
+        display: none;
+    }
+
+    #type {
+        display: block;
+        height: 60px;
+        padding-top: 10px;
     }
 }
 </style>
