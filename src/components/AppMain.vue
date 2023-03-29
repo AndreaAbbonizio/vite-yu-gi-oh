@@ -3,6 +3,7 @@ import { store } from '../store';
 import axios from 'axios';
 import AppCard from './AppCard.vue';
 import CardSearch from './CardSearch.vue';
+import NumberCards from "./NumberCards.vue";
 export default {
     data() {
         return {
@@ -13,6 +14,7 @@ export default {
     components: {
         AppCard,
         CardSearch,
+        NumberCards,
     },
     created() {
         axios.get(this.store.APIcall).then((res) => {
@@ -26,9 +28,14 @@ export default {
             if (this.store.cardName != "") {
 
                 apiNewString += `&fname=${this.store.cardName}`;
-
             }
 
+            if (this.store.cardType != "") {
+                apiNewString += `&type=${this.store.cardType}`;
+            }
+
+
+            console.log(this.store.cardType)
             console.log(apiNewString);
 
             axios.get(apiNewString).then((res) => {
@@ -36,6 +43,7 @@ export default {
                 this.store.cards = res.data.data;
                 console.log(this.store.cards);
             });
+
         },
     },
 
@@ -47,6 +55,7 @@ export default {
     <div id="container-main">
         <CardSearch @searchCard="search()"></CardSearch>
 
+        <NumberCards :numCards="store.cards.length"></NumberCards>
         <div class="container-cards">
             <!-- {{ card.name }} -->
             <AppCard v-for="card in store.cards" :card="card">
@@ -62,14 +71,16 @@ export default {
 
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 20px;
+    background-color: white;
 
     .container-cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: flex-end;
+        align-items: stretch;
         gap: 20px;
+
     }
 }
 </style>

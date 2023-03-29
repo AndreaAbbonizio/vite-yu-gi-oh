@@ -19,6 +19,9 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: calc(100% / 5 - 20px / 5 * 4);
     text-align: center;
     margin-bottom: .5em;
@@ -31,10 +34,6 @@ export default {
 
     h2 {
         margin-bottom: .7em;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     div:first-of-type {
@@ -47,7 +46,6 @@ export default {
 
     #type {
         display: block;
-        height: 60px;
         padding-top: 10px;
     }
 }
